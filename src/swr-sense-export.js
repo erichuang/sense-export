@@ -26,7 +26,7 @@ define([
   // Todo: Take care of the prefix:
   // var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/sense") + 1);
   generalUtils.addStyleToHeader(cssContent);
-  var faUrl = '/extensions/swr-sense-export/lib/external/fontawesome/css/font-awesome.min.css';
+  var faUrl = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css';
   generalUtils.addStyleLinkToHeader(faUrl, 'swr_sense_export__fontawesome');
 
   return {
@@ -128,13 +128,13 @@ define([
           var model = $scope.ext.model;
           var deferred = $q.defer();
 
-          model.getHyperCubeData('/qHyperCubeDef', [{qTop: 0, qWidth: 20, qLeft: 0, qHeight: 500}])
+          model.getHyperCubeData('/qHyperCubeDef', [{qTop: 0, qWidth: initProps.qHyperCubeDef.qInitialDataFetch[0].qWidth, qLeft: 0, qHeight: initProps.qHyperCubeDef.qInitialDataFetch[0].qHeight}])
             .then(function (data) {
               var columns = model.layout.qHyperCube.qSize.qcx;
               var totalHeight = model.layout.qHyperCube.qSize.qcy;
-              var pageHeight = 500;
+              var pageHeight = initProps.qHyperCubeDef.qInitialDataFetch[0].qHeight;
               var numberOfPages = Math.ceil(totalHeight / pageHeight);
-              $scope.log('Number of recs/page', 500);
+              $scope.log('Number of recs/page', pageHeight);
               $scope.log('Recs', totalHeight);
               $scope.log('Number of pages: ', numberOfPages);
 

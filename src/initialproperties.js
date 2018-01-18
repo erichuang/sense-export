@@ -7,8 +7,8 @@ define([], function () {
       qMeasures: [],
       qInitialDataFetch: [
         {
-          qWidth: 20,
-          qHeight: 500
+          qWidth: 40,
+          qHeight: 250
         }
       ]
     }
